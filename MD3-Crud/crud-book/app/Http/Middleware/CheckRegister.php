@@ -20,11 +20,10 @@ class CheckRegister
         if ($request->password !== $request->confirmPassword) {
             Session::flash('message', "Password confirmation failed");
             return redirect()->back();
+        } elseif (empty($request->name) || empty($request->email) || empty($request->password)) {
+            Session::flash('message', "Thông tin không được để trống");
+            return redirect()->back();
         }
-//elseif($request->name || $request->email || $request->password == null){
-//            Session::flash('message',"Thông tin không được để trống");
-//            return redirect()->back();
-//        }
         return $next($request);
     }
 }

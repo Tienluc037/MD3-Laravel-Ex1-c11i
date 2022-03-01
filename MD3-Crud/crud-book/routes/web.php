@@ -19,14 +19,14 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::middleware('checkAuth')->group(function () {
-    Route::get('books', [BookController::class, 'showAll'])->name('book.list');
-    Route::get('books/{id}/detail', [BookController::class, 'detail'])->name('book.detail');
-    Route::get('books/create', [BookController::class, 'showFormCreate'])->name('showFormCreate');
-    Route::post('books/create', [BookController::class, 'create'])->name('book.create');
-    Route::get('books/{id}/update', [BookController::class, 'edit'])->name('book.edit');
-    Route::post('books/{id}/update', [BookController::class, 'update'])->name('book.update');
-    Route::get('books/{id}/delete', [BookController::class, 'delete'])->name('book.delete');
+Route::middleware('checkAuth')->prefix('books')->group(function () {
+    Route::get('/', [BookController::class, 'showAll'])->name('book.list');
+    Route::get('/{id}/detail', [BookController::class, 'detail'])->name('book.detail');
+    Route::get('/create', [BookController::class, 'showFormCreate'])->name('showFormCreate');
+    Route::post('/create', [BookController::class, 'create'])->name('book.create');
+    Route::get('/{id}/update', [BookController::class, 'edit'])->name('book.edit');
+    Route::post('/{id}/update', [BookController::class, 'update'])->name('book.update');
+    Route::get('/{id}/delete', [BookController::class, 'delete'])->name('book.delete');
 
 });
 
