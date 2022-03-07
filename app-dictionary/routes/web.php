@@ -36,7 +36,7 @@ Route::post('/dictionary',function(Illuminate\Http\Request $request){
             }
         }
     }else {
-        $nono = "Nhập từ khóa đê";
+        $nono = "Nhập từ khóa";
         return view('dictionary',compact('nono'));
     }
 });

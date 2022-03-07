@@ -1,0 +1,9 @@
+create database `crud_book` collate utf8_unicode_ci;
+
+use `crud_book`;
+
+create table `books`(
+    id int primary key auto_increment,
+    title varchar(255),
+    content varchar(255)
+);
